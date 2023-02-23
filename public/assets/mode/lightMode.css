@@ -1,0 +1,15 @@
+.menu-bar {
+	background: linear-gradient(90deg, rgba(255,255,255,1) 36%, rgba(77,133,180,1) 72%, rgba(55,84,126,1) 100%);
+}
+
+.home {
+	background-color: #ffffff;
+}
+
+.mode {
+	color: black;
+}
+
+.home .card .card-header {
+	border-bottom: 1px solid #000000;
+}

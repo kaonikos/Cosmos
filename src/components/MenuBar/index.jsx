@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Ripple } from 'primereact/ripple';
+import { InputSwitch } from 'primereact/inputswitch';
 import { Actions } from '../../reducer/actions';
 import './styles.css';
 
@@ -10,6 +11,9 @@ const MenuBar = () => {
 	const dispatch = useDispatch();
 
 	const navigate = useNavigate();
+
+	const darkMode = useSelector((state) => state.darkMode);
+	const setDarkMode = (payload) => dispatch({ type: Actions.SetDarkMode, payload });
 
 	const currentPage = useSelector((state) => state.currentPage);
 	const setCurrentPage = (payload) => dispatch({ type: Actions.SetCurrentPage, payload });
@@ -34,6 +38,37 @@ const MenuBar = () => {
 			}
 		}, [currentPage]
 	);
+
+	const changeTheme = (value) => {
+		const element = document.getElementById('theme-css');
+		const urlTokens = element.getAttribute('href').split('/');
+		urlTokens[urlTokens.length - 1] = value;
+		const newURL = urlTokens.join('/');
+		replaceLink(element, newURL);
+	};
+
+	const changeMode = (value) => {
+		const element = document.getElementById('mode-css');
+		const urlTokens = element.getAttribute('href').split('/');
+		urlTokens[urlTokens.length - 1] = value;
+		const newURL = urlTokens.join('/');
+		replaceLink(element, newURL);
+	};
+
+	const replaceLink = (linkElement, href) => {
+		const id = linkElement.getAttribute('id');
+		const cloneLinkElement = linkElement.cloneNode(true);
+
+		cloneLinkElement.setAttribute('href', href);
+		cloneLinkElement.setAttribute('id', `${id}-clone`);
+
+		linkElement.parentNode.insertBefore(cloneLinkElement, linkElement.nextSibling);
+
+		cloneLinkElement.addEventListener('load', () => {
+			linkElement.remove();
+			cloneLinkElement.setAttribute('id', id);
+		});
+	};
 
 	return (
 		<div className="menu-bar">
@@ -63,12 +98,12 @@ const MenuBar = () => {
 				<div
 					className="p-ripple"
 					onClick={() => {
-						setCurrentPage('news');
-						navigate('/News');
+						setCurrentPage('expertise');
+						navigate('/Expertise');
 					}}
-					id="news"
+					id="expertise"
 				>
-					<p style={currentPage === 'news' ? { color: 'white' } : {}}>News</p>
+					<p style={currentPage === 'expertise' ? { color: 'white' } : {}}>Expertise</p>
 					<Ripple />
 				</div>
 				<div
@@ -79,7 +114,7 @@ const MenuBar = () => {
 					}}
 					id="about"
 				>
-					<p style={currentPage === 'about' ? { color: 'white' } : {}}>About us</p>
+					<p style={currentPage === 'about' ? { color: 'white' } : {}}>The Team</p>
 					<Ripple />
 				</div>
 				<div
@@ -94,8 +129,24 @@ const MenuBar = () => {
 					<Ripple />
 				</div>
 				<div className="bar" style={{ left, width, top: (bottom - 2), transition: 'left 0.3s' }} />
+				<div className="darkmode">
+					<i className="fa-solid fa-circle-half-stroke" />
+					<InputSwitch
+						checked={darkMode}
+						onChange={(e) => {
+							setDarkMode(e.value);
+							if (e.value) {
+								changeMode('darkMode.css');
+								// changeTheme('themeBlack.css');
+							} else {
+								changeMode('lightMode.css');
+								// changeTheme('themeWhite.css');
+							}
+							document.getElementById('mode').blur();
+						}}
+					/>
+				</div>
 			</div>
-
 		</div>
 	);
 };

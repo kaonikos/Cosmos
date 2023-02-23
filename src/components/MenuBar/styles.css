@@ -4,8 +4,6 @@
 	align-items: stretch;
 	justify-content: space-between;
 	width: 100%;
-	/*background-color: #4d85b4;*/
-	background: linear-gradient(90deg, rgba(255,255,255,1) 36%, rgba(77,133,180,1) 72%, rgba(55,84,126,1) 100%);
 }
 .menu-bar .logo {
 	display: flex;
@@ -67,4 +65,11 @@
 	width: 100px;
 	position: absolute;
 	transition: position 0.6s
+}
+
+.menu-bar .darkmode {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 24px;
 }

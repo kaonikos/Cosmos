@@ -1,0 +1,14 @@
+.menu-bar {
+	background: linear-gradient(90deg, #1c1c1c 36%, rgba(77,133,180,1) 72%, rgba(55,84,126,1) 100%);
+}
+
+.home {
+	background-color: #1c1c1c;
+}
+p {
+	color: white;
+}
+
+.home .card .card-header {
+	border-bottom: 1px solid white;
+}

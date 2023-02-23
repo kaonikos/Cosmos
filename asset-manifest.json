@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Cosmos/static/css/main.00c715de.css",
+    "main.js": "/Cosmos/static/js/main.75b0b494.js",
+    "static/media/contact.jpg": "/Cosmos/static/media/contact.16163acae06fedd42fc6.jpg",
+    "static/media/ship.jpg": "/Cosmos/static/media/ship.5b8a45e0945858b7bea7.jpg",
+    "static/media/office.jpg": "/Cosmos/static/media/office.b31684f35a3899455d51.jpg",
+    "static/media/header.jpg": "/Cosmos/static/media/header.0f864895447086b79301.jpg",
+    "static/media/logo3.png": "/Cosmos/static/media/logo3.1082aa62742958901045.png",
+    "static/media/primeicons.svg": "/Cosmos/static/media/primeicons.c6e2053303524e39530c.svg",
+    "static/media/primeicons.eot": "/Cosmos/static/media/primeicons.7fc4d8e224d1ff1b9c62.eot",
+    "static/media/primeicons.woff": "/Cosmos/static/media/primeicons.449aa8c65cdc5c2a8686.woff",
+    "static/media/primeicons.ttf": "/Cosmos/static/media/primeicons.91bacab1f083f2795272.ttf",
+    "static/media/logo1.png": "/Cosmos/static/media/logo1.2b5d13bdbbfdd7eab283.png",
+    "static/media/hammer.jpg": "/Cosmos/static/media/hammer.7b8b2f8357c23a91580c.jpg",
+    "static/media/background4.svg": "/Cosmos/static/media/background4.737b5056e250b77b534f.svg",
+    "index.html": "/Cosmos/index.html",
+    "main.00c715de.css.map": "/Cosmos/static/css/main.00c715de.css.map",
+    "main.75b0b494.js.map": "/Cosmos/static/js/main.75b0b494.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.00c715de.css",
+    "static/js/main.75b0b494.js"
+  ]
+}

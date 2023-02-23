@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Cosmos/static/css/main.06db2697.css",
-    "main.js": "/Cosmos/static/js/main.14881ac1.js",
+    "main.css": "/Cosmos/static/css/main.18e05f82.css",
+    "main.js": "/Cosmos/static/js/main.dd716bb0.js",
     "static/media/ship.jpg": "/Cosmos/static/media/ship.b8f712d77a7c3e319467.jpg",
     "static/media/contact.jpg": "/Cosmos/static/media/contact.5e52d1d1b2a43e7f4808.jpg",
     "static/media/office.jpg": "/Cosmos/static/media/office.8864f5baf4462dcd07b4.jpg",
@@ -15,11 +15,11 @@
     "static/media/hammer.jpg": "/Cosmos/static/media/hammer.7b8b2f8357c23a91580c.jpg",
     "static/media/background4.svg": "/Cosmos/static/media/background4.737b5056e250b77b534f.svg",
     "index.html": "/Cosmos/index.html",
-    "main.06db2697.css.map": "/Cosmos/static/css/main.06db2697.css.map",
-    "main.14881ac1.js.map": "/Cosmos/static/js/main.14881ac1.js.map"
+    "main.18e05f82.css.map": "/Cosmos/static/css/main.18e05f82.css.map",
+    "main.dd716bb0.js.map": "/Cosmos/static/js/main.dd716bb0.js.map"
   },
   "entrypoints": [
-    "static/css/main.06db2697.css",
-    "static/js/main.14881ac1.js"
+    "static/css/main.18e05f82.css",
+    "static/js/main.dd716bb0.js"
   ]
 }

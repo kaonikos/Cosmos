@@ -1,0 +1,70 @@
+.menu-bar {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: space-between;
+	width: 100%;
+	/*background-color: #4d85b4;*/
+	background: linear-gradient(90deg, rgba(255,255,255,1) 36%, rgba(77,133,180,1) 72%, rgba(55,84,126,1) 100%);
+}
+.menu-bar .logo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 16px;
+	gap: 12px;
+	cursor: pointer;
+}
+
+.menu-bar .logo .divider {
+	display: flex;
+	height: 100%;
+	width: 1px;
+	background-color: #37547e;
+}
+
+.menu-bar .logo p {
+	font-size: 24px;
+	font-weight: 600;
+	color: #37547e;
+}
+
+.menu-bar .logo .sub-title {
+	font-size: 20px;
+	font-weight: 600;
+	color: #4D85B4;
+}
+
+.menu-bar .options {
+	display: flex;
+	flex-direction: row;
+	margin-right: 12px;
+	gap: 12px;
+
+}
+
+.menu-bar .options .p-ripple {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	color: white;
+	padding: 12px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.menu-bar .options .p-ripple:hover {
+	background-color: rgba(255, 255, 255, 0.17);
+}
+
+.menu-bar .bar{
+	display: flex;
+	height: 2px;
+	background-color: #ffffff;
+	width: 100px;
+	position: absolute;
+	transition: position 0.6s
+}

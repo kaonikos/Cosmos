@@ -1,0 +1,14 @@
+.home {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	/*background-image: url('../../assets/backgroundImage.svg');*/
+	background-image: url('../../assets/background2.svg');
+	height: 100vh;
+}
+
+.home .card {
+	display: flex;
+
+	/*background-color: #37547e;*/
+}

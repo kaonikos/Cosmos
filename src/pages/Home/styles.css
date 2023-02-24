@@ -46,7 +46,6 @@
 	display: flex;
 	align-items: center;
 	padding: 24px;
-	height: 20%;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.7);
 }
@@ -145,4 +144,28 @@
 
 .home .card .content .logo {
 	width: 150px;
+}
+
+@media only screen and (max-width: 850px) {
+	.home .card .content {
+		flex-direction: column-reverse;
+	}
+	.home .card .content.reverse {
+		flex-direction: column-reverse;
+	}
+	.home .card .content .col {
+		width: 100%;
+	}
+	.home .card .content .item {
+		width: 100%;
+	}
+	.home .header {
+		height: 300px;
+	}
+	.home .header .text-container p, .home .card .card-header p {
+		font-size: 20px;
+	}
+	.home .card .content .item p {
+		font-size: 16px;
+	}
 }

@@ -2,10 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Ripple } from 'primereact/ripple';
-import { InputSwitch } from 'primereact/inputswitch';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons';
+import { Options } from './components';
 import { Actions } from '../../reducer/actions';
 import './styles.css';
 
@@ -24,6 +21,24 @@ const MenuBar = () => {
 	const [bottom, setBottom] = useState(null);
 	const [width, setWidth] = useState(0);
 
+	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+	const [alternative, setAlternative] = useState(false);
+
+	useEffect(
+		() => {
+			const handleResize = () => {
+				setScreenWidth(window.innerWidth);
+			};
+			// Attach the event listener to the window object
+			window.addEventListener('resize', handleResize);
+
+			// Remove the event listener when the component unmounts
+			return () => {
+				window.removeEventListener('resize', handleResize);
+			};
+		}, []
+	);
+
 	useEffect(
 		() => {
 			let element;
@@ -41,116 +56,66 @@ const MenuBar = () => {
 		}, [currentPage]
 	);
 
-	const changeTheme = (value) => {
-		const element = document.getElementById('theme-css');
-		const urlTokens = element.getAttribute('href').split('/');
-		urlTokens[urlTokens.length - 1] = value;
-		const newURL = urlTokens.join('/');
-		replaceLink(element, newURL);
-	};
+	useEffect(
+		() => {
+			if (alternative) {
+				document.body.classList.add('no-scroll');
+			} else {
+				document.body.classList.add('scroll');
+			}
+		}, []
+	);
 
-	const changeMode = (value) => {
-		const element = document.getElementById('mode-css');
-		const urlTokens = element.getAttribute('href').split('/');
-		urlTokens[urlTokens.length - 1] = value;
-		const newURL = urlTokens.join('/');
-		replaceLink(element, newURL);
-	};
+	if (screenWidth > 850) {
+		return (
+			<div className="menu-bar">
+				<div
+					className="logo"
+					onClick={() => {
+						setCurrentPage('home');
+						navigate('/Home');
+					}}
+				>
+					<p>COSMOS.LEGAL</p>
+					<div className="divider" />
+					<p className="sub-title">Law Firm</p>
+				</div>
+				<Options left={left} bottom={bottom} width={width} />
+			</div>
+		);
+	}
 
-	const replaceLink = (linkElement, href) => {
-		const id = linkElement.getAttribute('id');
-		const cloneLinkElement = linkElement.cloneNode(true);
+	const { body } = document;
+	const html = document.documentElement;
 
-		cloneLinkElement.setAttribute('href', href);
-		cloneLinkElement.setAttribute('id', `${id}-clone`);
-
-		linkElement.parentNode.insertBefore(cloneLinkElement, linkElement.nextSibling);
-
-		cloneLinkElement.addEventListener('load', () => {
-			linkElement.remove();
-			cloneLinkElement.setAttribute('id', id);
-		});
-	};
+	const height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
 
 	return (
-		<div className="menu-bar">
-			<div
-				className="logo"
-				onClick={() => {
-					setCurrentPage('home');
-					navigate('/Home');
-				}}
-			>
-				<p>COSMOS.LEGAL</p>
-				<div className="divider" />
-				<p className="sub-title">Law Firm</p>
+		<>
+			<div style={{ position: 'absolute', height: `${height}px` }}>
+				<div className="alternative-menu-icon" onClick={() => setAlternative(!alternative)} style={alternative ? { gap: '10px' } : { right: '-45px' }}>
+					<div className="line first" style={alternative ? { transform: 'rotate(45deg)', width: '70%', marginLeft: '10px' } : {}} />
+					<div className="line" style={alternative ? { width: '0' } : {}} />
+					<div className="line second" style={alternative ? { transform: 'rotate(-45deg)', width: '70%', marginLeft: '10px' } : {}} />
+				</div>
 			</div>
-			<div className="options">
-				{/* <div */}
-				{/*	className="p-ripple" */}
-				{/*	onClick={() => { */}
-				{/*		setCurrentPage('home'); */}
-				{/*		navigate('/Home'); */}
-				{/*	}} */}
-				{/*	id="home" */}
-				{/* > */}
-				{/*	<p style={currentPage === 'home' ? { color: 'white' } : {}}>Home</p> */}
-				{/*	<Ripple /> */}
-				{/* </div> */}
-				<div
-					className="p-ripple"
-					onClick={() => {
-						setCurrentPage('expertise');
-						navigate('/Expertise');
-					}}
-					id="expertise"
-				>
-					<p style={currentPage === 'expertise' ? { color: 'white' } : {}}>Expertise</p>
-					<Ripple />
-				</div>
-				<div
-					className="p-ripple"
-					onClick={() => {
-						setCurrentPage('about');
-						navigate('/About');
-					}}
-					id="about"
-				>
-					<p style={currentPage === 'about' ? { color: 'white' } : {}}>The Team</p>
-					<Ripple />
-				</div>
-				<div
-					className="p-ripple"
-					onClick={() => {
-						setCurrentPage('contact');
-						navigate('/Contact');
-					}}
-					id="contact"
-				>
-					<p style={currentPage === 'contact' ? { color: 'white' } : {}}>Contact us</p>
-					<Ripple />
-				</div>
-				<div className="bar" style={{ left, width, top: (bottom - 2), transition: 'left 0.3s' }} />
-				<div className="darkmode">
-					<i className="fa-solid fa-circle-half-stroke" />
-					<FontAwesomeIcon icon={faCircleHalfStroke} />
-					<InputSwitch
-						checked={darkMode}
-						onChange={(e) => {
-							setDarkMode(e.value);
-							if (e.value) {
-								changeMode('darkMode.css');
-								// changeTheme('themeBlack.css');
-							} else {
-								changeMode('lightMode.css');
-								// changeTheme('themeWhite.css');
-							}
-							document.getElementById('mode').blur();
+			<div className="alternative-menu" style={{ height: `${height + 69}px`, left: alternative ? '0' : '-300px' }}>
+				<div className="alternative-options">
+					<div
+						className="logo"
+						onClick={() => {
+							setCurrentPage('home');
+							navigate('/Home');
 						}}
-					/>
+					>
+						<p>COSMOS.LEGAL</p>
+						<div className="divider" />
+						<p className="sub-title">Law Firm</p>
+					</div>
+					<Options left={left} bottom={bottom} width={width} style={{ flexDirection: 'column' }} />
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

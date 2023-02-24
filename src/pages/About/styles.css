@@ -1,0 +1,6 @@
+.about {
+	display: flex;
+	width: 100%;
+	height: calc(100vh - 61px);
+	background-image: url('../../assets/backgrounds/background4.svg');
+}

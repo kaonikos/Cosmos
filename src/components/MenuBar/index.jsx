@@ -1,9 +1,11 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions,import/no-extraneous-dependencies */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Ripple } from 'primereact/ripple';
 import { InputSwitch } from 'primereact/inputswitch';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { Actions } from '../../reducer/actions';
 import './styles.css';
 
@@ -131,6 +133,7 @@ const MenuBar = () => {
 				<div className="bar" style={{ left, width, top: (bottom - 2), transition: 'left 0.3s' }} />
 				<div className="darkmode">
 					<i className="fa-solid fa-circle-half-stroke" />
+					<FontAwesomeIcon icon={faCircleHalfStroke} />
 					<InputSwitch
 						checked={darkMode}
 						onChange={(e) => {
